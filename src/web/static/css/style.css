@@ -1,0 +1,150 @@
+:root {
+    --bg-color:#03404b;
+    --size: 60px;
+    --radius: 16px;
+    --padding: 10px;
+    --primary: #0080ff;
+}
+
+body {
+    /* background-color: var(--bg-color); */
+}
+
+
+/* =================================== menu 1 =================================== */
+/* .menu {
+    position: absolute;
+    top: 3%;
+    left: 3%;
+    background-color: white;
+    display: grid;
+    grid-auto-rows: var(--size);  
+    border-radius: var(--radius);
+    padding: var(--padding);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.menu__item {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    text-decoration: none;
+    width: var(--size);
+    height: var(--size);
+    position: relative;
+    transition: all 0.3s ease;
+    border-radius: var(--radius);
+}
+
+.menu__item:hover {
+    background-color: var(--primary);
+}
+
+.menu__ic {
+    font-size: 20px;
+}
+
+.menu__item:hover .menu__ic {
+    font-weight: bold;
+    color: white;
+}
+
+.menu__text {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    z-index: -1;
+    max-width: 0;
+    overflow: hidden;
+    padding: 0;
+    font-size: 18px;
+    background-color: white;
+    border-radius: 0 100px 100px 0;
+    transform: translateY(-50%);
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+.menu__item:hover .menu__text {
+    padding: 14px 24px;
+    padding-left: 32px;
+    max-width: initial;
+}
+
+.menu__item:last-child::before {
+    content: '';
+    display: block;
+    position: absolute;
+    
+} */
+
+
+
+
+/* =================================== menu 2 (multilevel) =================================== */
+.topmenu {
+    display: flex;
+    background-color: #3b362e;
+
+}
+
+a {
+    display: inline-block;
+    padding: 15px 30px;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+
+.submenu {
+    min-width: 200px;
+    position: absolute;
+    z-index: 5;
+    transform-origin: 0 0;
+    /* transform: rotateX(-90deg); */
+    transition: .3s linear;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.submenu li {
+    position: relative;
+}
+
+.submenu .submenu {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    transition: .3s linear;
+}
+
+.topmenu li:hover > .submenu {
+    /* transform: rotateX(0deg); */
+    visibility: visible;
+    opacity: 1;
+}
+
+.submenu a {
+    border-bottom: 1px solid #000000;
+    padding: 10px 20px;
+    background-color: #555555;
+    font-size: 16px;
+    display: block;
+}
+
+.parallax_1, .parallax_2 {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed !important;
+    height: 100vh;
+}
+
+.parallax_1 {
+    background: url('/static/img/dart_vaider.jpg');
+}
+
+.parallax_2 {
+    background: url('/static/img/fight.png');
+}

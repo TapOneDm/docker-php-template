@@ -1,0 +1,62 @@
+version: "3.8"
+
+services:
+  php-fpm:
+    container_name: php-fpm
+    build:
+      context: ./../
+      dockerfile: ./docker/php-fpm/Dockerfile
+      args:
+        - PUID=${PUID}
+        - PGID=${PGID}
+        - INSTALL_XDEBUG=${INSTALL_XDEBUG}
+    volumes:
+      - ./../:/var/www/
+    networks:
+      - web
+
+  nginx:
+    container_name: nginx
+    build:
+      context: ./nginx
+    ports:
+      - ${NGINX_HOST_HTTP_PORT}:80
+    volumes:
+      - ..:/var/www:rw
+    depends_on:
+      - php-fpm
+    networks:
+      - web
+
+  postgres:
+    container_name: postgres
+    build:
+      context: ./postgres
+    ports:
+      - ${POSTGRES_PORT}:5432
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - db_data:/var/lib/postgresql/data:rw
+    networks:
+      - web
+
+  adminer:
+    container_name: adminerssh://git@gitea.collection.direct:2222/pavimus/gallerist_pro_web.git
+    image: adminer
+    ports:
+      - ${ADMINER_PORT}:8080
+    depends_on:
+      - postgres
+    networks:
+      - web
+
+networks:
+  web:
+    driver: bridge
+
+
+volumes:
+  db_data:
